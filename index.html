@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPE Retail Ltd – Beauty & Personal Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf8f5;
+    --charcoal: #1c1c1c;
+    --mid: #4a4a4a;
+    --light: #8a8a8a;
+    --border: #e8e4de;
+    --accent: #c8956c;
+    --accent-dark: #a8724a;
+    --white: #ffffff;
+    --soft: #f2ede6;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); font-size: 15px; line-height: 1.6; }
+
+  nav { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .nav-top { display: flex; align-items: center; justify-content: space-between; max-width: 1280px; margin: 0 auto; padding: 14px 32px; }
+  .nav-logo img { height: 52px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--mid); font-size: 14px; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-bar-secondary { background: var(--charcoal); }
+  .nav-bar-secondary ul { display: flex; list-style: none; justify-content: center; gap: 0; max-width: 1280px; margin: 0 auto; flex-wrap: wrap; }
+  .nav-bar-secondary ul a { display: block; padding: 10px 22px; color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 500; text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
+  .nav-bar-secondary ul a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  .hero { background: linear-gradient(135deg, #1c1c1c 0%, #2e2420 50%, #3a2d25 100%); color: #fff; padding: 100px 32px; text-align: center; position: relative; overflow: hidden; }
+  .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
+  .hero-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; line-height: 1.15; margin-bottom: 20px; }
+  .hero p { font-size: 17px; color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto 36px; font-weight: 300; }
+  .btn { display: inline-block; padding: 14px 36px; border-radius: 2px; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); margin-left: 12px; }
+  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+  .trust-bar { background: var(--soft); border-bottom: 1px solid var(--border); padding: 18px 32px; }
+  .trust-bar-inner { display: flex; justify-content: center; gap: 60px; max-width: 1280px; margin: 0 auto; flex-wrap: wrap; }
+  .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--mid); }
+  .trust-icon { font-size: 18px; }
+
+  section { padding: 72px 32px; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 600; margin-bottom: 12px; }
+  .section-header p { color: var(--light); font-size: 16px; max-width: 560px; margin: 0 auto; font-weight: 300; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
+
+  .brands-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .brand-card { background: var(--white); padding: 28px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: background 0.2s; cursor: pointer; text-decoration: none; }
+  .brand-card:hover { background: var(--soft); }
+  .brand-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--charcoal); margin-bottom: 4px; }
+  .brand-cat { font-size: 11px; color: var(--light); text-transform: uppercase; letter-spacing: 0.08em; }
+  .brand-icon { font-size: 28px; margin-bottom: 10px; }
+
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+  .product-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+  .product-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-2px); }
+  .product-img { height: 200px; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 48px; border-bottom: 1px solid var(--border); }
+  .product-body { padding: 16px; }
+  .product-brand { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+  .product-desc { font-size: 13px; color: var(--light); margin-bottom: 14px; line-height: 1.5; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-size: 17px; font-weight: 600; color: var(--charcoal); }
+  .product-btn { background: var(--charcoal); color: #fff; border: none; padding: 8px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+  .product-btn:hover { background: var(--accent); }
+
+  .tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 40px; overflow-x: auto; }
+  .tab { padding: 12px 24px; font-size: 14px; font-weight: 500; color: var(--light); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+  .tab.active { color: var(--charcoal); border-bottom-color: var(--charcoal); font-weight: 600; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-visual { background: var(--soft); height: 420px; display: flex; align-items: center; justify-content: center; font-size: 80px; border: 1px solid var(--border); }
+  .about-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 38px); font-weight: 600; margin-bottom: 20px; line-height: 1.2; }
+  .about-text p { color: var(--mid); margin-bottom: 16px; font-size: 15px; font-weight: 300; line-height: 1.7; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
+  .stat { border-left: 3px solid var(--accent); padding-left: 16px; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--charcoal); }
+  .stat-label { font-size: 13px; color: var(--light); font-weight: 400; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 16px; }
+  .contact-info p { color: var(--mid); font-weight: 300; line-height: 1.7; margin-bottom: 32px; }
+  .contact-detail { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 20px; }
+  .contact-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .contact-detail strong { display: block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--charcoal); margin-bottom: 2px; }
+  .contact-detail span { font-size: 14px; color: var(--mid); }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); background: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--charcoal); outline: none; transition: border-color 0.2s; border-radius: 0; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .policy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; }
+  .policy-card { background: var(--white); border: 1px solid var(--border); padding: 32px 28px; }
+  .policy-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 12px; }
+  .policy-card p { font-size: 14px; color: var(--mid); line-height: 1.7; font-weight: 300; }
+  .policy-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+
+  .faq-list { max-width: 820px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; cursor: pointer; font-weight: 500; font-size: 15px; }
+  .faq-q:hover { color: var(--accent); }
+  .faq-a { padding: 0 0 22px; color: var(--mid); font-size: 14px; line-height: 1.7; font-weight: 300; display: none; }
+  .faq-a.open { display: block; }
+  .faq-arrow { font-size: 20px; color: var(--light); transition: transform 0.2s; }
+  .faq-arrow.open { transform: rotate(45deg); }
+
+  footer { background: var(--charcoal); color: rgba(255,255,255,0.75); padding: 60px 32px 32px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .footer-about img { height: 44px; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: 0.9; }
+  .footer-about p { font-size: 13px; line-height: 1.7; max-width: 280px; font-weight: 300; }
+  .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; margin-bottom: 20px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; max-width: 1280px; margin: 0 auto; font-size: 12px; color: rgba(255,255,255,0.4); flex-wrap: wrap; gap: 12px; }
+
+  .page { display: none; }
+  .page.active { display: block; }
+  .page-hero { background: var(--soft); border-bottom: 1px solid var(--border); padding: 52px 32px; }
+  .page-hero-inner { max-width: 1280px; margin: 0 auto; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 600; }
+  .breadcrumb { font-size: 13px; color: var(--light); margin-bottom: 12px; }
+  .breadcrumb a { color: var(--light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+
+  .prose { max-width: 820px; margin: 0 auto; }
+  .prose h2 { font-family: 'Playfair Display', serif; font-size: 24px; margin: 36px 0 12px; }
+  .prose h3 { font-size: 17px; font-weight: 600; margin: 24px 0 8px; }
+  .prose p { color: var(--mid); margin-bottom: 16px; line-height: 1.75; font-weight: 300; }
+  .prose ul { color: var(--mid); margin: 0 0 16px 20px; line-height: 1.75; font-weight: 300; }
+
+  .notification { position: fixed; bottom: 24px; right: 24px; background: var(--charcoal); color: #fff; padding: 14px 22px; font-size: 14px; font-weight: 500; z-index: 999; transform: translateX(120%); transition: transform 0.3s; border-left: 4px solid var(--accent); max-width: 320px; }
+  .notification.show { transform: translateX(0); }
+
+  @media (max-width: 900px) {
+    .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .trust-bar-inner { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-top">
+    <div class="nav-logo">
+      <a href="#" onclick="showPage('home')">
+        <img src="data:image/jpeg;base64,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" alt="IPE Retail Ltd">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#" onclick="showPage('products')">Products</a></li>
+      <li><a href="#" onclick="showPage('brands')">Our Brands</a></li>
+      <li><a href="#" onclick="showPage('about')">About Us</a></li>
+      <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+    </ul>
+  </div>
+  <div class="nav-bar-secondary">
+    <ul>
+      <li><a href="#" onclick="showPage('products')">All Products</a></li>
+      <li><a href="#" onclick="filterBrand('skincare')">Skincare</a></li>
+      <li><a href="#" onclick="filterBrand('haircare')">Haircare</a></li>
+      <li><a href="#" onclick="filterBrand('makeup')">Makeup</a></li>
+      <li><a href="#" onclick="showPage('delivery')">Delivery &amp; Returns</a></li>
+      <li><a href="#" onclick="showPage('faq')">FAQ</a></li>
+      <li><a href="#" onclick="showPage('contact')">Trade Enquiries</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Authorised UK Retailer</div>
+      <h1>Premium Beauty &amp; Personal Care</h1>
+      <p>Stocking the UK's most trusted beauty brands — from skincare essentials to professional haircare — delivered to your door.</p>
+      <a href="#" class="btn btn-primary" onclick="showPage('products')">Shop All Products</a>
+      <a href="#" class="btn btn-outline" onclick="showPage('brands')">Our Brands</a>
+    </div>
+  </div>
+
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item"><span class="trust-icon">🚚</span> Free UK Delivery over £30</div>
+      <div class="trust-item"><span class="trust-icon">↩️</span> 30-Day Easy Returns</div>
+      <div class="trust-item"><span class="trust-icon">🏆</span> Authorised UK Retailer</div>
+      <div class="trust-item"><span class="trust-icon">🔒</span> Secure Checkout</div>
+      <div class="trust-item"><span class="trust-icon">⭐</span> 4.8★ Customer Rating</div>
+    </div>
+  </div>
+
+  <section style="background: var(--white);">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Our Portfolio</span>
+        <h2>Brands We Stock</h2>
+        <p>Authorised UK retailer for 13 premium beauty and personal care brands</p>
+      </div>
+      <div class="brands-grid">
+        <a href="#" class="brand-card" onclick="filterBrand('skincare')"><span class="brand-icon">🧴</span><div class="brand-name">Neutrogena</div><div class="brand-cat">Skincare</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('makeup')"><span class="brand-icon">💄</span><div class="brand-name">Rimmel</div><div class="brand-cat">Makeup</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('makeup')"><span class="brand-icon">💋</span><div class="brand-name">Revlon</div><div class="brand-cat">Makeup &amp; Hair</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('makeup')"><span class="brand-icon">✨</span><div class="brand-name">Maybelline</div><div class="brand-cat">Makeup</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('skincare')"><span class="brand-icon">🌿</span><div class="brand-name">L'Oréal</div><div class="brand-cat">Beauty</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('skincare')"><span class="brand-icon">👶</span><div class="brand-name">Childs Farm</div><div class="brand-cat">Baby &amp; Child</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('makeup')"><span class="brand-icon">🎨</span><div class="brand-name">e.l.f.</div><div class="brand-cat">Makeup</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('makeup')"><span class="brand-icon">💎</span><div class="brand-name">Max Factor</div><div class="brand-cat">Makeup</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('skincare')"><span class="brand-icon">💙</span><div class="brand-name">NIVEA</div><div class="brand-cat">Skincare &amp; Body</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('skincare')"><span class="brand-icon">☀️</span><div class="brand-name">Bondi Sands</div><div class="brand-cat">Tan &amp; SPF</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('haircare')"><span class="brand-icon">💇</span><div class="brand-name">Wella</div><div class="brand-cat">Haircare</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('haircare')"><span class="brand-icon">🥛</span><div class="brand-name">milk_shake</div><div class="brand-cat">Haircare</div></a>
+        <a href="#" class="brand-card" onclick="filterBrand('haircare')"><span class="brand-icon">🌸</span><div class="brand-name">Joico</div><div class="brand-cat">Haircare</div></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Bestsellers</span>
+        <h2>Featured Products</h2>
+        <p>Our most popular lines across all brands</p>
+      </div>
+      <div class="products-grid" id="featured-products"></div>
+    </div>
+  </section>
+
+  <section style="background: var(--charcoal); color: #fff; text-align: center;">
+    <div class="section-inner">
+      <span class="section-label" style="color: var(--accent);">Trade &amp; Wholesale</span>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px,3.5vw,42px); margin-bottom: 16px;">Are You a Supplier or Brand Partner?</h2>
+      <p style="color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto 32px; font-weight: 300;">IPE Retail Ltd works with suppliers, distributors and brand owners across the UK. Get in touch to discuss trade accounts, wholesale pricing and partnership opportunities.</p>
+      <a href="#" class="btn btn-primary" onclick="showPage('contact')">Make a Trade Enquiry</a>
+    </div>
+  </section>
+</div>
+
+<!-- PRODUCTS -->
+<div id="page-products" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / Products</div>
+      <h1>All Products</h1>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="tabs">
+        <div class="tab active" onclick="filterProducts('all', this)">All Products</div>
+        <div class="tab" onclick="filterProducts('skincare', this)">Skincare</div>
+        <div class="tab" onclick="filterProducts('haircare', this)">Haircare</div>
+        <div class="tab" onclick="filterProducts('makeup', this)">Makeup</div>
+      </div>
+      <div class="products-grid" id="all-products"></div>
+    </div>
+  </section>
+</div>
+
+<!-- BRANDS -->
+<div id="page-brands" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / Our Brands</div>
+      <h1>Brands We Stock</h1>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="section-header">
+        <p>We are proud to be an authorised UK retailer for the following premium beauty and personal care brands. All products are genuine and sourced from authorised distributors.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+        <div class="policy-card"><span class="policy-icon">🧴</span><h3>Neutrogena</h3><p>Dermatologist-developed skincare trusted worldwide. From the iconic Hydro Boost range to Norwegian Formula and SPF protection — skincare that works.</p></div>
+        <div class="policy-card"><span class="policy-icon">💄</span><h3>Rimmel London</h3><p>Born in London, loved globally. Rimmel brings affordable, trend-led colour cosmetics from foundations and mascaras to lip products.</p></div>
+        <div class="policy-card"><span class="policy-icon">💋</span><h3>Revlon</h3><p>An iconic American beauty brand delivering bold lip colours, professional-grade hair colour and innovative cosmetics for over 90 years.</p></div>
+        <div class="policy-card"><span class="policy-icon">✨</span><h3>Maybelline New York</h3><p>New York's number one cosmetics brand. Maybelline's legendary mascaras, foundations and eye shadows are worn by millions across the UK every day.</p></div>
+        <div class="policy-card"><span class="policy-icon">🌿</span><h3>L'Oréal Paris</h3><p>The world's leading beauty brand. L'Oréal Paris spans skincare, haircare, colour cosmetics and sun protection.</p></div>
+        <div class="policy-card"><span class="policy-icon">👶</span><h3>Childs Farm</h3><p>Award-winning baby and child skincare, formulated for sensitive and eczema-prone skin. Dermatologically tested and paediatrician-approved.</p></div>
+        <div class="policy-card"><span class="policy-icon">🎨</span><h3>e.l.f. Cosmetics</h3><p>Eyes. Lips. Face. e.l.f. brings professional-quality, cruelty-free and vegan beauty products at accessible prices — the fastest growing cosmetics brand in the UK.</p></div>
+        <div class="policy-card"><span class="policy-icon">💎</span><h3>Max Factor</h3><p>Founded by Hollywood's make-up artist to the stars. Max Factor's professional-grade foundations, mascaras and lipsticks bring cinematic glamour to everyday beauty.</p></div>
+        <div class="policy-card"><span class="policy-icon">💙</span><h3>NIVEA</h3><p>Europe's number one skincare brand. NIVEA's trusted moisturisers, body lotions, deodorants and sun care products have been household staples for over 100 years.</p></div>
+        <div class="policy-card"><span class="policy-icon">☀️</span><h3>Bondi Sands</h3><p>Australia's leading self-tan and sun care brand. From gradual tanning foams to SPF moisturisers — that Bondi Beach glow, all year round.</p></div>
+        <div class="policy-card"><span class="policy-icon">💇</span><h3>Wella Professionals</h3><p>Professional salon-quality haircare for home use. Wella's shampoos, conditioners, treatments and styling products are formulated by professional colourists.</p></div>
+        <div class="policy-card"><span class="policy-icon">🥛</span><h3>milk_shake</h3><p>Italian professional haircare using organic milk proteins and fruit extracts. milk_shake's luxurious formulas nourish, repair and protect all hair types.</p></div>
+        <div class="policy-card"><span class="policy-icon">🌸</span><h3>Joico</h3><p>American professional haircare renowned for Defy Damage and K-PAK repair systems. Joico products are a staple in salons and homes across the UK.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / About Us</div>
+      <h1>About IPE Retail Ltd</h1>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-visual">🛍️</div>
+        <div class="about-text">
+          <span class="section-label">Who We Are</span>
+          <h2>A UK Beauty Retailer You Can Trust</h2>
+          <p>IPE Retail Ltd is a UK-based beauty and personal care retailer, stocking an extensive range of premium brands across skincare, haircare and cosmetics. We supply genuine, authorised products sourced directly from brand owners and authorised UK distributors.</p>
+          <p>We sell across multiple channels including our own website and Amazon UK, giving customers flexibility in how and where they shop with us. Our focus is on providing access to the brands consumers love, at competitive prices, with a seamless shopping experience.</p>
+          <p>As an authorised retailer, we work closely with brand partners and suppliers, upholding the integrity of every brand we stock. Suppliers and brand owners can be confident their products are represented and sold appropriately through our channels.</p>
+          <div class="about-stats">
+            <div class="stat"><div class="stat-num">13</div><div class="stat-label">Premium Brands</div></div>
+            <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Products Listed</div></div>
+            <div class="stat"><div class="stat-num">UK</div><div class="stat-label">Registered Company</div></div>
+            <div class="stat"><div class="stat-num">4.8★</div><div class="stat-label">Customer Rating</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="background: var(--soft);">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Our Commitment</span>
+        <h2>Why Shop With Us?</h2>
+      </div>
+      <div class="policy-grid">
+        <div class="policy-card"><span class="policy-icon">✅</span><h3>100% Authentic</h3><p>Every product we sell is genuine and sourced from authorised UK distributors and brand owners. We never stock grey market or counterfeit goods.</p></div>
+        <div class="policy-card"><span class="policy-icon">🤝</span><h3>Supplier Partnerships</h3><p>We work collaboratively with brand and supplier partners, maintaining open communication and upholding brand guidelines and standards.</p></div>
+        <div class="policy-card"><span class="policy-icon">📦</span><h3>Multi-Channel Retail</h3><p>We sell via our own website and Amazon UK, giving customers choice and ensuring brands benefit from wide consumer reach.</p></div>
+        <div class="policy-card"><span class="policy-icon">🇬🇧</span><h3>UK Registered</h3><p>IPE Retail Ltd is a registered UK company, operating in full compliance with UK consumer law, trading standards and data protection regulations.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- DELIVERY -->
+<div id="page-delivery" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / Delivery &amp; Returns</div>
+      <h1>Delivery &amp; Returns</h1>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="section-header"><h2>Delivery Information</h2></div>
+      <div class="policy-grid" style="margin-bottom: 60px;">
+        <div class="policy-card"><span class="policy-icon">🚀</span><h3>Standard Delivery</h3><p>3–5 working days. £3.99 or FREE on orders over £30. Available to all UK mainland addresses via Royal Mail or DPD.</p></div>
+        <div class="policy-card"><span class="policy-icon">⚡</span><h3>Express Delivery</h3><p>Next working day when ordered before 2pm. £6.99 flat rate. Monday–Friday only, excludes bank holidays.</p></div>
+        <div class="policy-card"><span class="policy-icon">📦</span><h3>Order Tracking</h3><p>All orders include a tracking number sent via email once dispatched. Track your delivery via the carrier's website at any time.</p></div>
+      </div>
+      <div class="section-header"><h2>Returns Policy</h2></div>
+      <div class="prose">
+        <p>We want you to be completely satisfied with your purchase. If for any reason you are not happy, we offer a straightforward 30-day returns policy.</p>
+        <h3>Eligibility</h3>
+        <p>Items must be returned within 30 days of receipt, unused, in their original packaging and in a saleable condition. For hygiene reasons, we are unable to accept returns on opened cosmetics or skincare products unless they are faulty.</p>
+        <h3>How to Return</h3>
+        <p>Contact our customer service team at returns@ipe-retail.co.uk with your order number and reason for return. We will provide a returns authorisation and instructions within 2 working days.</p>
+        <h3>Refunds</h3>
+        <p>Refunds are processed within 5–10 working days of receiving your returned item, issued to the original payment method. Return postage is at the customer's expense unless the item is faulty.</p>
+        <h3>Faulty or Damaged Items</h3>
+        <p>If you receive a faulty or damaged product, please contact us within 48 hours of receipt with photographic evidence. We will arrange a free return and issue a full refund or replacement.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FAQ -->
+<div id="page-faq" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / FAQ</div>
+      <h1>Frequently Asked Questions</h1>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are all your products genuine? <span class="faq-arrow">+</span></div><div class="faq-a">Yes — absolutely. Every product sold by IPE Retail Ltd is 100% genuine and sourced from authorised UK distributors or directly from brand owners. We do not stock grey market, parallel import or counterfeit goods.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you offer free delivery? <span class="faq-arrow">+</span></div><div class="faq-a">Yes. Standard delivery is free on all orders over £30. Orders under £30 incur a flat £3.99 charge. Express next-day delivery is available for £6.99.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I return a product I'm not happy with? <span class="faq-arrow">+</span></div><div class="faq-a">Yes. We offer a 30-day returns policy on all eligible items. Products must be unused and in original packaging. For hygiene reasons, opened cosmetics and skincare cannot be returned unless faulty. Contact returns@ipe-retail.co.uk to begin a return.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I track my order? <span class="faq-arrow">+</span></div><div class="faq-a">Once your order is dispatched, you will receive an email with a tracking number. Use this on the carrier's website (Royal Mail or DPD) to follow your delivery in real time.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you supply trade customers or wholesalers? <span class="faq-arrow">+</span></div><div class="faq-a">We do receive trade and wholesale enquiries and consider them on a case-by-case basis. Please use our Trade Enquiry form on the Contact page or email trade@ipe-retail.co.uk with details of your business and requirements.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which brands do you stock? <span class="faq-arrow">+</span></div><div class="faq-a">We currently stock: Neutrogena, Rimmel, Revlon, Maybelline, L'Oréal, Childs Farm, e.l.f., Max Factor, NIVEA, Bondi Sands, Wella, milk_shake and Joico. We are regularly adding new brands.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Where are you based? <span class="faq-arrow">+</span></div><div class="faq-a">IPE Retail Ltd is a UK-registered company operating across multiple sales channels including this website and Amazon UK, serving customers throughout the United Kingdom.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I contact customer service? <span class="faq-arrow">+</span></div><div class="faq-a">You can reach us via the Contact page or by emailing hello@ipe-retail.co.uk. We aim to respond to all enquiries within 1 working day.</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / Contact</div>
+      <h1>Get in Touch</h1>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Contact IPE Retail Ltd</h3>
+          <p>Whether you're a customer with a query, a supplier interested in a trade partnership, or a brand owner looking to discuss how we stock and sell your products — we'd love to hear from you.</p>
+          <div class="contact-detail"><span class="contact-icon">📧</span><div><strong>General Enquiries</strong><span>hello@ipe-retail.co.uk</span></div></div>
+          <div class="contact-detail"><span class="contact-icon">🤝</span><div><strong>Trade &amp; Supplier Enquiries</strong><span>trade@ipe-retail.co.uk</span></div></div>
+          <div class="contact-detail"><span class="contact-icon">↩️</span><div><strong>Returns</strong><span>returns@ipe-retail.co.uk</span></div></div>
+          <div class="contact-detail"><span class="contact-icon">🇬🇧</span><div><strong>Registered In</strong><span>England &amp; Wales</span></div></div>
+          <div style="margin-top: 32px; padding: 20px; background: var(--soft); border: 1px solid var(--border);">
+            <strong style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em;">Response Times</strong>
+            <p style="font-size: 13px; color: var(--mid); margin-top: 8px; margin-bottom: 0;">We aim to respond to all enquiries within 1 working day. Trade enquiries may take up to 3 working days.</p>
+          </div>
+        </div>
+        <div>
+          <div style="background: var(--white); border: 1px solid var(--border); padding: 36px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 24px;">Send Us a Message</h3>
+            <div class="form-row">
+              <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane"></div>
+              <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+            </div>
+            <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@example.com"></div>
+            <div class="form-group"><label>Company (if applicable)</label><input type="text" placeholder="Your company name"></div>
+            <div class="form-group">
+              <label>Enquiry Type</label>
+              <select>
+                <option>General Customer Enquiry</option>
+                <option>Order / Delivery Query</option>
+                <option>Return or Refund</option>
+                <option>Trade / Supplier Enquiry</option>
+                <option>Brand Partnership</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Message</label><textarea placeholder="Tell us how we can help..."></textarea></div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="submitForm()">Send Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PRIVACY -->
+<div id="page-privacy" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / Privacy Policy</div>
+      <h1>Privacy Policy</h1>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="prose">
+        <p><em>Last updated: May 2025</em></p>
+        <h2>1. Who We Are</h2>
+        <p>IPE Retail Ltd ("we", "us", "our") is a UK-registered company operating ipe-retail.co.uk. We are the data controller for personal information collected through this website.</p>
+        <h2>2. What Data We Collect</h2>
+        <p>We may collect: name and contact details; delivery and billing address; payment information (processed securely — we do not store card details); order history; communications you send us; and website usage data via cookies.</p>
+        <h2>3. How We Use Your Data</h2>
+        <p>We use your data to process and fulfil orders; respond to enquiries; send order confirmations and updates; comply with legal obligations; and improve our website and services.</p>
+        <h2>4. Legal Basis for Processing</h2>
+        <p>We process data on the following bases: performance of a contract; legitimate interests; legal obligation; and consent where you have opted in to marketing.</p>
+        <h2>5. Data Sharing</h2>
+        <p>We do not sell your personal data. We may share it with delivery partners, payment processors, IT service providers, and regulatory authorities where required by law.</p>
+        <h2>6. Your Rights</h2>
+        <p>Under UK GDPR, you have the right to access, rectify, or erase your data; restrict or object to processing; and data portability. Contact hello@ipe-retail.co.uk to exercise these rights.</p>
+        <h2>7. Cookies</h2>
+        <p>Our website uses cookies to improve your browsing experience. You can control cookie settings via your browser.</p>
+        <h2>8. Contact</h2>
+        <p>For privacy-related queries, contact us at hello@ipe-retail.co.uk.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- TERMS -->
+<div id="page-terms" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / Terms &amp; Conditions</div>
+      <h1>Terms &amp; Conditions</h1>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="prose">
+        <p><em>Last updated: May 2025</em></p>
+        <h2>1. Introduction</h2>
+        <p>These terms govern your use of ipe-retail.co.uk and your purchase of products from IPE Retail Ltd. By using this website, you agree to these terms.</p>
+        <h2>2. Company Information</h2>
+        <p>IPE Retail Ltd is a company registered in England and Wales. Our registered company details are available upon request.</p>
+        <h2>3. Products and Pricing</h2>
+        <p>All products are subject to availability. Prices are in GBP and include VAT where applicable. We reserve the right to change prices at any time. In the event of a pricing error, we will contact you before processing your order.</p>
+        <h2>4. Orders and Contract</h2>
+        <p>Placing an order constitutes an offer to purchase. A contract is formed when we send an order confirmation email. We reserve the right to decline orders at our discretion.</p>
+        <h2>5. Delivery</h2>
+        <p>We aim to deliver within the timeframes stated on our Delivery page. Delivery times are estimates and not guaranteed. Risk in goods passes to you upon delivery.</p>
+        <h2>6. Returns and Refunds</h2>
+        <p>Our returns policy is set out on the Delivery and Returns page and forms part of these terms. Your statutory rights under the Consumer Rights Act 2015 are not affected.</p>
+        <h2>7. Intellectual Property</h2>
+        <p>All content on this website is owned by or licensed to IPE Retail Ltd. Brand names and logos belong to their respective owners and are used for identification purposes only.</p>
+        <h2>8. Limitation of Liability</h2>
+        <p>To the extent permitted by law, IPE Retail Ltd's liability is limited to the value of the products purchased. We are not liable for indirect or consequential losses.</p>
+        <h2>9. Governing Law</h2>
+        <p>These terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-about">
+      <img src="data:image/jpeg;base64,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" alt="IPE Retail">
+      <p>A UK-based beauty and personal care retailer, stocking 13 premium brands across skincare, haircare and cosmetics.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('products')">All Products</a></li>
+        <li><a href="#" onclick="filterBrand('skincare')">Skincare</a></li>
+        <li><a href="#" onclick="filterBrand('haircare')">Haircare</a></li>
+        <li><a href="#" onclick="filterBrand('makeup')">Makeup</a></li>
+        <li><a href="#" onclick="showPage('brands')">Our Brands</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+        <li><a href="#" onclick="showPage('faq')">FAQ</a></li>
+        <li><a href="#" onclick="showPage('delivery')">Delivery &amp; Returns</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
+        <li><a href="#" onclick="showPage('terms')">Terms &amp; Conditions</a></li>
+        <li><a href="#" onclick="showPage('delivery')">Returns Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 IPE Retail Ltd. All rights reserved. Registered in England &amp; Wales.</span>
+    <span>All brand names are trademarks of their respective owners.</span>
+  </div>
+</footer>
+
+<div class="notification" id="notification"></div>
+
+<script>
+const products = [
+  { brand:'Neutrogena', name:'Hydro Boost Water Gel Moisturiser', desc:'Hyaluronic acid gel that quenches skin and locks in hydration all day long.', price:'£12.99', cat:'skincare', icon:'🧴' },
+  { brand:'Neutrogena', name:'Norwegian Formula Hand Cream', desc:'Concentrated formula that heals even severely dry hands fast.', price:'£4.99', cat:'skincare', icon:'🤲' },
+  { brand:'Rimmel', name:'Scandaleyes Reloaded Mascara', desc:'Thickens and lengthens lashes for a bold, dramatic look.', price:'£8.49', cat:'makeup', icon:'👁️' },
+  { brand:'Rimmel', name:'Lasting Finish Foundation', desc:'Up to 25-hour coverage with a flawless, natural finish.', price:'£10.99', cat:'makeup', icon:'💄' },
+  { brand:'Revlon', name:'ColorStay Lip Liner', desc:'Long-lasting definition with a smooth, creamy formula.', price:'£7.99', cat:'makeup', icon:'💋' },
+  { brand:'Revlon', name:'Total Color Permanent Hair Colour', desc:'Salon-quality colour with 100% grey coverage at home.', price:'£6.49', cat:'haircare', icon:'🎨' },
+  { brand:'Maybelline', name:'Sky High Mascara', desc:'Limitless length and buildable volume — the UK\'s bestselling mascara.', price:'£11.99', cat:'makeup', icon:'✨' },
+  { brand:'Maybelline', name:'Fit Me Matte + Poreless Foundation', desc:'Smooths skin and minimises pores for a natural, matte finish.', price:'£9.99', cat:'makeup', icon:'🌟' },
+  { brand:"L'Oréal", name:'Elvive Extraordinary Oil', desc:'Precious oils to nourish and add luminous shine to all hair types.', price:'£8.99', cat:'haircare', icon:'💫' },
+  { brand:"L'Oréal", name:'Revitalift Laser Serum', desc:'Anti-ageing serum with pro-retinol and vitamin C for visibly younger skin.', price:'£24.99', cat:'skincare', icon:'🌿' },
+  { brand:'Childs Farm', name:'Baby Moisturiser – Unfragranced', desc:'Dermatologically tested moisturiser for sensitive and eczema-prone skin.', price:'£7.99', cat:'skincare', icon:'👶' },
+  { brand:'Childs Farm', name:'Baby Shampoo & Body Wash', desc:'Gentle, tear-free formula that cleans and conditions delicate baby skin.', price:'£5.99', cat:'skincare', icon:'🛁' },
+  { brand:'e.l.f.', name:'Poreless Putty Primer', desc:'Vegan and cruelty-free primer that blurs pores and primes skin flawlessly.', price:'£10.00', cat:'makeup', icon:'🎨' },
+  { brand:'e.l.f.', name:'Halo Glow Liquid Filter', desc:'Hydrating, luminous complexion booster for a glass-skin effect.', price:'£14.00', cat:'makeup', icon:'💎' },
+  { brand:'Max Factor', name:'2000 Calorie Mascara', desc:'Extreme volume mascara with flexible micro-wax formula.', price:'£10.99', cat:'makeup', icon:'👁️' },
+  { brand:'Max Factor', name:'Facefinity All Day Flawless Foundation', desc:'3-in-1 foundation, primer and SPF20 for long-lasting coverage.', price:'£12.99', cat:'makeup', icon:'🌸' },
+  { brand:'NIVEA', name:'Q10 Anti-Wrinkle Day Cream SPF30', desc:'Clinically proven to reduce wrinkles with Q10 and SPF30 protection.', price:'£13.49', cat:'skincare', icon:'💙' },
+  { brand:'NIVEA', name:'Express Hydration Body Lotion', desc:'24-hour moisture that absorbs instantly for soft, smooth skin.', price:'£5.49', cat:'skincare', icon:'🧴' },
+  { brand:'Bondi Sands', name:'Self Tanning Foam – Dark', desc:'Lightweight foam for a deep, natural-looking tan. Easy to apply.', price:'£14.99', cat:'skincare', icon:'☀️' },
+  { brand:'Bondi Sands', name:'SPF50+ Fragrance Free Sunscreen Lotion', desc:'Broad spectrum UVA/UVB protection, water-resistant for 4 hours.', price:'£12.99', cat:'skincare', icon:'🌅' },
+  { brand:'Wella', name:'SP Luxe Oil Keratin Protect Shampoo', desc:'Nourishes and protects colour-treated hair with keratin proteins.', price:'£14.99', cat:'haircare', icon:'💇' },
+  { brand:'Wella', name:'EIMI Mega Strong Styling Gel', desc:'Ultra-strong hold gel for bold styles with long-lasting control.', price:'£11.99', cat:'haircare', icon:'💈' },
+  { brand:'milk_shake', name:'Moisture Plus Shampoo', desc:'Enriched with milk proteins and organic fruits to restore dry hair.', price:'£16.50', cat:'haircare', icon:'🥛' },
+  { brand:'milk_shake', name:'Sweet Camomile Shampoo', desc:'Delicate formula that enhances natural golden tones in fair hair.', price:'£15.50', cat:'haircare', icon:'🌼' },
+  { brand:'Joico', name:'K-PAK Color Therapy Shampoo', desc:'Repairs damage and protects colour vibrancy with keratin technology.', price:'£17.99', cat:'haircare', icon:'🌸' },
+  { brand:'Joico', name:'Defy Damage Protective Shield', desc:'Bond-protecting treatment that shields hair from daily damage.', price:'£18.99', cat:'haircare', icon:'🛡️' },
+];
+
+function renderProducts(containerId, items) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = items.map(p => `
+    <div class="product-card">
+      <div class="product-img">${p.icon}</div>
+      <div class="product-body">
+        <div class="product-brand">${p.brand}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">${p.price}</div>
+          <button class="product-btn" onclick="notify('${p.name.replace(/'/g,"\\'")}')">Add to Bag</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function notify(name) {
+  const n = document.getElementById('notification');
+  n.textContent = '\u2713 ' + name + ' added to bag';
+  n.classList.add('show');
+  setTimeout(() => n.classList.remove('show'), 2800);
+}
+
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo(0, 0);
+  if (page === 'products') renderProducts('all-products', products);
+}
+
+function filterProducts(cat, tabEl) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  if (tabEl) tabEl.classList.add('active');
+  const filtered = cat === 'all' ? products : products.filter(p => p.cat === cat);
+  renderProducts('all-products', filtered);
+}
+
+function filterBrand(cat) {
+  showPage('products');
+  setTimeout(() => {
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(t => t.classList.remove('active'));
+    const idx = {all:0,skincare:1,haircare:2,makeup:3}[cat] || 0;
+    if (tabs[idx]) tabs[idx].classList.add('active');
+    filterProducts(cat, null);
+  }, 50);
+}
+
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const arrow = el.querySelector('.faq-arrow');
+  answer.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+function submitForm() {
+  notify('Message sent! We\'ll be in touch within 1 working day.');
+}
+
+renderProducts('featured-products', products.filter((_, i) => [0,2,4,6,8,10,12,14].includes(i)));
+</script>
+</body>
+</html>
